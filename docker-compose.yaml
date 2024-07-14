@@ -50,12 +50,12 @@ services:
     build: ./mlflow-server
     container_name: mlserver-mlflow
     ports:
-      - "5000:5000"
-      - "5001:5001"
+      - "5001:5000"
       - "5002:5002"
       - "5003:5003"
       - "5004:5004"
       - "5005:5005"
+      - "5006:5006"
     depends_on:
       - "ftpd"
       - "postgresml"

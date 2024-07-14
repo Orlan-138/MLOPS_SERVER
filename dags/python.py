@@ -10,6 +10,10 @@ def helloWorld():
 def byeWorld():
     print('Bye World')
 
+def heyWorld():
+    print('Hey World')
+    
+
 with DAG("01_python_example",
          start_date=datetime(2023,10,1),
          schedule_interval="@hourly",
@@ -24,5 +28,8 @@ with DAG("01_python_example",
         task_id="bye_world",
         python_callable=byeWorld)
     
+    task3 = PythonOperator(
+        task_id="hey_world",
+        python_callable=heyWorld)
     
-    task1 >> task2
+    task1 >> [task3, task2]

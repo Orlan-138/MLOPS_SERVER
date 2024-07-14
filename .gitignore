@@ -11,3 +11,4 @@ dags/utils/.pytest_cache/
 dags/.ipynb_checkpoints/
 dags/__pycache__
 
+.DS_Store

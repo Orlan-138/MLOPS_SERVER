@@ -26,35 +26,35 @@ dag = DAG(
 # Tarea 1: Descargar los datos
 t1 = BashOperator(
     task_id='download_data',
-    bash_command='python download_data.py',
+    bash_command='echo download_data.py',
     dag=dag,
 )
 
 # Tarea 2: Preprocesar los datos
 t2 = BashOperator(
     task_id='preprocess_data',
-    bash_command='python preprocess_data.py',
+    bash_command='echo preprocess_data.py',
     dag=dag,
 )
 
 # Tarea 3: Entrenar el modelo
 t3 = BashOperator(
     task_id='train_model',
-    bash_command='python train_model.py',
+    bash_command='echo train_model.py',
     dag=dag,
 )
 
 # Tarea 4: Evaluar el modelo
 t4 = BashOperator(
     task_id='evaluate_model',
-    bash_command='python evaluate_model.py',
+    bash_command='echo evaluate_model.py',
     dag=dag,
 )
 
 # Tarea 5: Desplegar el modelo
 t5 = BashOperator(
     task_id='deploy_model',
-    bash_command='python deploy_model.py',
+    bash_command='echo deploy_model.py',
     dag=dag,
 )
 
@@ -67,3 +67,5 @@ t6 = PythonOperator(
     python_callable=send_notification,
     dag=dag,
 )
+
+t1 >> t2 >> t3 >> t4 >> t5 >> t6
